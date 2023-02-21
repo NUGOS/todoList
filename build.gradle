@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.2'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id "org.flywaydb.flyway" version "9.8.1"
 }
 
 group = 'ua.goit'
@@ -20,9 +21,21 @@ repositories {
 	maven { url 'https://repo.spring.io/snapshot' }
 }
 
+def properties = new Properties()
+properties.load(new FileInputStream(file('src/main/resources/application.properties')))
+
+flyway {
+	url = properties['spring.datasource.url']
+	user = properties['spring.datasource.username']
+	password = properties['spring.datasource.password']
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation group: 'org.flywaydb', name: 'flyway-core', version: '9.14.1'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.2'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'

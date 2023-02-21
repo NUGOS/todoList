@@ -36,6 +36,7 @@ public class NoteController {
         return "redirect:/note/list";
     }
 
+
     @PostMapping("/delete")
     public String deleteNote(@RequestParam long id) {
         noteService.deleteById(id);
@@ -50,7 +51,7 @@ public class NoteController {
 
     @PostMapping("/add")
     public String addNoteSubmit(@ModelAttribute Note note) {
-        noteService.add(note);
+        noteService.save(note);
         return "redirect:/note/list";
     }
 }

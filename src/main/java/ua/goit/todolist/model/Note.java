@@ -1,10 +1,21 @@
 package ua.goit.todolist.model;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@ToString
+@Entity
+@Table(name = "note")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Note {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String title;
+    @Column
     private String content;
 }
