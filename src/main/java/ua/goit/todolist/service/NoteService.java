@@ -6,7 +6,6 @@ import ua.goit.todolist.model.Note;
 import ua.goit.todolist.repository.NoteRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service

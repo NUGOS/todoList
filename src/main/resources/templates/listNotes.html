@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+<div th:insert="~{nav.html :: nav}"></div>
 <div class="container">
     <h1 class="mt-5">List of Notes</h1>
     <a class="btn btn-primary mt-3 mb-3" th:href="@{/note/add}">Add Note</a>

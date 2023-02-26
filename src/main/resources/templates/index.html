@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Note Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="~{nav.html :: nav}"></div>
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to the Note Application!</h1>
+        <p class="lead">This is the main page of the application. From here, you can access all your notes and create new ones.</p>
+        <hr class="my-4">
+        <p>Please click the button below to create a new note.</p>
+        <a class="btn btn-primary btn-lg" href="/note/add" role="button">Create New Note</a>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-XJdD5nAuz80p5r5+P4E7aFY0eCExJtkh4G4j/bhtH1xTKLoSg0LEQVEfrhTULZ7Q"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+hBQJo+Y6anLIZxnRHfV6U/20OzX7IuHQI6z5"
+        crossorigin="anonymous"></script>
+</body>
+</html>
