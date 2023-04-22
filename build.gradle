@@ -1,53 +1,54 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.0.2'
-	id 'io.spring.dependency-management' version '1.1.0'
-	id "org.flywaydb.flyway" version "9.8.1"
+    id 'java'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "org.flywaydb.flyway" version "9.8.1"
 }
 
 group = 'ua.goit'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '19'
+targetCompatibility = '19'
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
-	maven { url 'https://repo.spring.io/snapshot' }
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 def properties = new Properties()
 properties.load(new FileInputStream(file('src/main/resources/application.properties')))
 
 flyway {
-	url = properties['spring.datasource.url']
-	user = properties['spring.datasource.username']
-	password = properties['spring.datasource.password']
+    url = properties['spring.datasource.url']
+    user = properties['spring.datasource.username']
+    password = properties['spring.datasource.password']
 }
 apply plugin: "org.springframework.boot"
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
-	implementation group: 'org.flywaydb', name: 'flyway-core', version: '9.14.1'
-	implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.2'
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '9.14.1'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.2'
 
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
