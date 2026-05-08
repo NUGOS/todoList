@@ -25,7 +25,14 @@ repositories {
 }
 
 def properties = new Properties()
-properties.load(new FileInputStream(file('src/main/resources/application.properties')))
+def localPropertiesFile = file('src/main/resources/application.properties')
+if (localPropertiesFile.exists()) {
+    properties.load(new FileInputStream(localPropertiesFile))
+} else {
+    properties['spring.datasource.url'] = 'jdbc:postgresql://localhost:5432/todolist'
+    properties['spring.datasource.username'] = 'postgres'
+    properties['spring.datasource.password'] = 'postgres'
+}
 
 flyway {
     url = properties['spring.datasource.url']
